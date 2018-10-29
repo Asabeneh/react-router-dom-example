@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect, Prompt } from 'react-router-dom';
-import Navbar from './Navbar';
 
-const Home = (props) => <h1>Home:{props.name}:{props.place}</h1>;
+
+const Home = (props) => <h1> My Home is in {props.location},{props.country}</h1>;
 const About = () => <h1>About</h1>;
 const Contact = () => <h1>Contact</h1>;
 const Error = () => <h1> It is Not Found</h1>;
 const LogIn = () => <h1>Please login</h1>
+
 
 const User = (props) =>  {
   let username = props.username;
@@ -14,6 +15,31 @@ const User = (props) =>  {
       <h1>Welcome {username}</h1>;
     </div>;
 }
+
+
+const Navbar = props => {
+  return (
+    <ul>
+      <li>
+        <NavLink to="/">HOME</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">ABOUT</NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact">CONTACT</NavLink>
+      </li>
+      <li>
+        <NavLink to="/user/Asabeneh">User Asabeneh</NavLink>
+      </li>
+      <li>
+        <NavLink to="/user/John">User John</NavLink>
+      </li>
+    </ul>
+  );
+};
+
+
 
 
 
@@ -47,7 +73,7 @@ class App extends Component {
             </button>
             <Switch>
               <Route exact path="/" render={() => {
-                  return <Home name="Palace" place="Mars" />;
+                  return <Home location="Helsinki" country="Finland" />;
                 }} />
               <Route exact strict path="/about" component={About} />
               <Route path="/contact" component={Contact} />
